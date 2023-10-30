@@ -24,7 +24,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          color: Colors.grey[200], // Warna latar belakang Container
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/bg.jpeg'),
+              fit: BoxFit.contain,
+              alignment: Alignment.topCenter, // Atur posisi gambar
+            ),
+          ),
+          // color: Colors.grey[200], // Warna latar belakang Container
           child: Column(
             children: [
               Row(
@@ -81,18 +88,20 @@ class HomePage extends StatelessWidget {
                   color: Colors.red[700],
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                height: 142,
+                height: 136,
                 margin: const EdgeInsets.only(bottom: 8, left: 20, right: 20),
                 child: Column(children: [
                   Container(
                     padding: const EdgeInsets.only(
-                        top: 18, bottom: 18, left: 15, right: 15),
+                        top: 15, bottom: 15, left: 15, right: 15),
                     alignment: Alignment.centerLeft,
                     child: const Text(
                       "Hi, SOFYAN NOOR ARIEF, S.ST, M.KOM",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 14.0,
+                        fontFamily: 'Mulish',
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -103,19 +112,20 @@ class HomePage extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        height: 70,
+                        height: 65,
                         width: 150,
                         margin: const EdgeInsets.only(left: 15, right: 15),
                         child: Column(
                           children: [
                             Container(
                               margin: const EdgeInsets.only(
-                                  top: 20, bottom: 5, right: 70),
+                                  top: 16, bottom: 5, right: 70),
                               child: const Text(
                                 "Your Balance",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 10.0,
+                                  fontFamily: 'Mulish',
                                 ),
                               ),
                             ),
@@ -131,6 +141,7 @@ class HomePage extends StatelessWidget {
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 13.0,
+                                          fontFamily: 'Mulish',
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Icon(
@@ -146,21 +157,22 @@ class HomePage extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(5.0),
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
-                        height: 70,
+                        height: 65,
                         width: 150,
                         // margin: const EdgeInsets.only(left: 15, right: 15),
                         child: Column(
                           children: [
                             Container(
                               margin: const EdgeInsets.only(
-                                  top: 20, bottom: 5, right: 62),
+                                  top: 16, bottom: 5, right: 62),
                               child: const Text(
                                 "Bonus Balance",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 10.0,
+                                  fontFamily: 'Mulish',
                                 ),
                               ),
                             ),
@@ -177,6 +189,7 @@ class HomePage extends StatelessWidget {
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 13.0,
+                                          fontFamily: 'Mulish',
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Icon(
@@ -197,6 +210,10 @@ class HomePage extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
+                    border: Border.all(
+                      color: Colors.grey, // Warna garis
+                      width: 0.2, // Lebar garis
+                    ),
                   ),
                   margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -212,7 +229,10 @@ class HomePage extends StatelessWidget {
                           ),
                           Text(
                             "TopUp",
-                            style: TextStyle(fontSize: 10),
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontFamily: 'Mulish',
+                            ),
                           )
                         ],
                       ),
@@ -224,7 +244,10 @@ class HomePage extends StatelessWidget {
                           ),
                           Text(
                             "Send Money",
-                            style: TextStyle(fontSize: 10),
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontFamily: 'Mulish',
+                            ),
                           )
                         ],
                       ),
@@ -236,7 +259,10 @@ class HomePage extends StatelessWidget {
                           ),
                           Text(
                             "Ticket Code",
-                            style: TextStyle(fontSize: 10),
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontFamily: 'Mulish',
+                            ),
                           )
                         ],
                       ),
@@ -248,7 +274,10 @@ class HomePage extends StatelessWidget {
                           ),
                           Text(
                             "See All",
-                            style: TextStyle(fontSize: 10),
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontFamily: 'Mulish',
+                            ),
                           )
                         ],
                       )
@@ -258,7 +287,6 @@ class HomePage extends StatelessWidget {
               ImageSlider(),
             ],
           )),
-      
     );
   }
 }
@@ -299,7 +327,7 @@ class ListIconKedua extends StatelessWidget {
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
-                  mainAxisExtent: 90.0, // Jumlah kolom dalam grid
+                  mainAxisExtent: 90.0,
                 ),
                 itemCount: icons.length,
                 itemBuilder: (context, index) {
@@ -310,7 +338,10 @@ class ListIconKedua extends StatelessWidget {
                     ),
                     Text(
                       text[index],
-                      style: const TextStyle(fontSize: 13),
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontFamily: 'Mulish',
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ]);
@@ -372,7 +403,7 @@ class _ImageSliderState extends State<ImageSlider> {
       children: [
         Container(
           margin: const EdgeInsets.only(left: 20, right: 20),
-          height: 130,
+          height: 134,
           child: PageView.builder(
             controller: _pageController,
             itemCount: images.length,
@@ -392,23 +423,26 @@ class _ImageSliderState extends State<ImageSlider> {
             },
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(images.length, (index) {
-            return Padding(
-              padding: const EdgeInsets.all(8),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                width: _currentPage == index ? 10 : 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _currentPage == index ? Colors.blue : Colors.grey,
+        Container(
+          padding: const EdgeInsets.only(left: 30, top: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: List.generate(images.length, (index) {
+              return Padding(
+                padding: const EdgeInsets.all(5),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  width: _currentPage == index ? 10 : 8,
+                  height: 7,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _currentPage == index ? Colors.red : Colors.grey,
+                  ),
                 ),
-              ),
-            );
-          }),
-        ),
+              );
+            }),
+          ),
+        )
       ],
     );
   }

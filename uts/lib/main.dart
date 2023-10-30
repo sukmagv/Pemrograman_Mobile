@@ -33,11 +33,12 @@ class _MyAppState extends State<MyApp> {
         body: MyApp.tabScreens[_tabIndex],
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.red,
+          mini: true,
           onPressed: () {},
           child: const Icon(
             Icons.qr_code,
             color: Colors.white,
-            size: 32,
+            size: 30,
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

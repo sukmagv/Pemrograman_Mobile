@@ -22,12 +22,17 @@ class HistoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 1,
+      initialIndex: 0,
       length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Transaction History',
-              style: TextStyle(color: Colors.black, fontSize: 17.0)),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 17.0,
+                fontFamily: 'Mulish',
+                fontWeight: FontWeight.bold,
+              )),
           backgroundColor: Colors.white,
           centerTitle: true,
           bottom: const TabBar(
@@ -35,13 +40,21 @@ class HistoryPage extends StatelessWidget {
               Tab(
                 child: Text(
                   'Pending',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'Mulish',
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               Tab(
                 child: Text(
                   'Done',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'Mulish',
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],
@@ -53,17 +66,67 @@ class HistoryPage extends StatelessWidget {
           children: [
             // Isi dari Tab 1
             Container(
-              color: Colors.grey[300], // Warna latar belakang Tab 1
+              color: Colors.grey[200], // Warna latar belakang Tab 1
               child: Center(
-                child: Text('All transaction is Completed!'),
-              ),
+                  child: RichText(
+                textAlign: TextAlign.center,
+                text: const TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'All transaction is completed!\n',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontFamily: 'Mulish', // Ukuran teks untuk baris pertama
+                        fontWeight:
+                            FontWeight.bold, // Bobot teks untuk baris pertama
+                        color: Colors.black, // Warna teks untuk baris pertama
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'Any pending transaction will appear in this page',
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        fontFamily: 'Mulish', // Ukuran teks untuk baris kedua
+                        fontWeight:
+                            FontWeight.normal, // Bobot teks untuk baris kedua
+                        color: Colors.black, // Warna teks untuk baris kedua
+                      ),
+                    ),
+                  ],
+                ),
+              )),
             ),
             // Isi dari Tab 2
             Container(
-              color: Colors.grey[300], // Warna latar belakang Tab 2
+              color: Colors.grey[200], // Warna latar belakang Tab 2
               child: Center(
-                child: Text('All transaction is Completed!'),
-              ),
+                  child: RichText(
+                textAlign: TextAlign.center,
+                text: const TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'All transaction is completed!\n',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontFamily: 'Mulish', // Ukuran teks untuk baris pertama
+                        fontWeight:
+                            FontWeight.bold, // Bobot teks untuk baris pertama
+                        color: Colors.black, // Warna teks untuk baris pertama
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'Any done transaction will appear in this page',
+                      style: TextStyle(
+                        fontSize: 14.0,
+                        fontFamily: 'Mulish', // Ukuran teks untuk baris kedua
+                        fontWeight:
+                            FontWeight.normal, // Bobot teks untuk baris kedua
+                        color: Colors.black, // Warna teks untuk baris kedua
+                      ),
+                    ),
+                  ],
+                ),
+              )),
             )
           ],
         ),

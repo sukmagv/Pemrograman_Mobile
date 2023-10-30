@@ -89,3 +89,9 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - assets/images/
+
+  fonts:
+    - family: Mulish
+      fonts:
+        - asset: assets/fonts/Mulish/Mulish-Regular.ttf
+        - asset: assets/fonts/Mulish/Mulish-Bold.ttf
