@@ -11,20 +11,28 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  TextEditingController _inputUser = new TextEditingController();
+  final _inputUser = TextEditingController();
   double kelvin = 0.0;
   double reamur = 0.0;
 
+  var listItem = ["Kelvin", "Reamur"];
+  String newValue = "Kelvin";
+  double _result = 0;
+
+  final listViewItem = <String>[];
+
   void convertTemperature() {
-    double userInput = double.tryParse(_inputUser.text) ?? 0.0;
-    // Lakukan konversi ke Kelvin dan Reamor
-    double kelvinTemperature = userInput + 273.15;
-    double reamurTemperature = userInput * 0.8;
+    final userInput = double.tryParse(_inputUser.text) ?? 0.0;
 
     setState(() {
-      kelvin = kelvinTemperature;
-      reamur = reamurTemperature;
+      if (newValue == "Kelvin") {
+        _result = userInput + 273;
+      } else {
+        _result = (4 / 5) * userInput;
+      }
     });
+
+    listViewItem.add("$newValue : $_result");
   }
 
   @override
@@ -51,31 +59,49 @@ class _MyAppState extends State<MyApp> {
                   decoration: const InputDecoration(
                     hintText: 'Masukkan Suhu Dalam Celcius',
                   )),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              DropdownButton<String>(
+                items: listItem.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                value: newValue,
+                onChanged: (changeValue) {
+                  setState(() {
+                    newValue = changeValue.toString();
+                  });
+                },
+              ),
+              Column(
                 children: [
-                  Column(
-                    children: [
-                      Text('Suhu dalam Kelvin'),
-                      Text(
-                        kelvin.toStringAsFixed(2),
-                        style: TextStyle(
-                            fontSize: 40.0, fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                  const Text(
+                    'Hasil',
+                    style: TextStyle(fontSize: 25.0),
                   ),
-                  Column(
-                    children: [
-                      Text('Suhu dalam Reamur'),
-                      Text(
-                        reamur.toStringAsFixed(2),
-                        style: TextStyle(
-                            fontSize: 40.0, fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                  Text(
+                    _result.toStringAsFixed(2),
+                    style: const TextStyle(
+                        fontSize: 40.0, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
+              Container(
+                margin: const EdgeInsets.only(top: 10, bottom: 10),
+                child: const Text(
+                  "Riwayat Konversi",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+              Expanded(
+                  child: ListView.builder(
+                      itemCount: listViewItem.length,
+                      itemBuilder: (_, index) {
+                        return Container(
+                          margin: const EdgeInsets.symmetric(vertical: 5),
+                          child: Text(listViewItem[index]),
+                        );
+                      })),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -91,11 +117,39 @@ class _MyAppState extends State<MyApp> {
                     ),
                   )
                 ],
-              )
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class Result extends StatelessWidget {
+  const Result({
+    required Key key,
+    required this.result,
+  }) : super(key: key);
+  final double result;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20, bottom: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "Hasil",
+            style: TextStyle(fontSize: 20),
+          ),
+          Text(
+            result.toStringAsFixed(1),
+            style: TextStyle(fontSize: 30),
+          )
+        ],
+      ),
+    );
+    // );
   }
 }
